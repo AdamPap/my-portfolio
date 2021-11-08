@@ -1,6 +1,6 @@
-import { createGlobalStyle, DefaultTheme } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-interface MyTheme {
+export interface MyTheme {
   bg: string;
   primary: string;
   white: string;
@@ -8,6 +8,10 @@ interface MyTheme {
     regular: string;
     small: string;
   };
+}
+
+export interface ThemeProps {
+  theme: MyTheme;
 }
 
 export const theme = {
@@ -19,10 +23,6 @@ export const theme = {
     small: "400px",
   },
 };
-
-interface ThemeProps {
-  theme: MyTheme;
-}
 
 export const GlobalStyles = createGlobalStyle`
 * {  

@@ -9,5 +9,9 @@ export const Wrapper: React.FC<WrapperProps> = ({
   children,
   variant = "regular",
 }) => {
-  return <Box variant={variant}>{children}</Box>;
+  return (
+    <Box variant={variant} padding="10px 30px">
+      {children}
+    </Box>
+  );
 };
