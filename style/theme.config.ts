@@ -9,6 +9,7 @@ export interface MyTheme {
     small: string;
   };
 }
+// export type MyTheme = typeof theme;
 
 export interface ThemeProps {
   theme: MyTheme;

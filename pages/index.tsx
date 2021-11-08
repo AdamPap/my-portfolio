@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import NextLink from "next/link";
 import styled from "styled-components";
 import { Box } from "../components/Box";
 import { CircleButton } from "../components/CircleButton";
@@ -32,7 +33,11 @@ const Home: NextPage = () => {
           <div>Developer</div>
         </HeroOutlinedText>
       </h1>
-      <CircleButton variant="outline">See Projects</CircleButton>
+      <NextLink href="/test" passHref>
+        <a>
+          <CircleButton variant="outline">View Projects</CircleButton>
+        </a>
+      </NextLink>
     </Layout>
   );
 };
