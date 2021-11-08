@@ -1,23 +1,27 @@
 import { createGlobalStyle, DefaultTheme } from "styled-components";
 
+interface MyTheme {
+  bg: string;
+  primary: string;
+  white: string;
+  wrapper: {
+    regular: string;
+    small: string;
+  };
+}
+
 export const theme = {
-  // body: "#fffff",
-  // main: "#5C14DB",
-  // mainColor: "#FFFFFF",
-  // accent: "#E5DE17",
-  // accentColor: "#161616",
-  // secondary: "#FFFFFF",
-  // secondaryColor: "#343434",
-  // dullColor: "#343434",
-  // ternary: "#000000",
-  // codeColor: "#D121C5",
   bg: "#111111",
   primary: "#08FDD9",
   white: "white",
+  wrapper: {
+    regular: "1200px",
+    small: "400px",
+  },
 };
 
-interface MyTheme {
-  theme: typeof theme;
+interface ThemeProps {
+  theme: MyTheme;
 }
 
 export const GlobalStyles = createGlobalStyle`
@@ -29,8 +33,8 @@ html,
 body {   
   margin: 0;   
   padding: 0;   
-  background: ${({ theme }: MyTheme) => theme.bg};   
-  color: ${({ theme }: MyTheme) => theme.primary};   
+  background: ${({ theme }: ThemeProps) => theme.bg};   
+  color: ${({ theme }: ThemeProps) => theme.primary};   
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, Segoe UI,
   Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
   sans-serif !important; 

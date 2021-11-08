@@ -1,12 +1,18 @@
 import type { NextPage } from "next";
-import styled from "styled-components";
-
-const MyDiv = styled.div`
-  color: yellow;
-`;
+import { Box } from "../components/Box";
+import { Layout } from "../components/Layout";
 
 const Home: NextPage = () => {
-  return <MyDiv>INDEX</MyDiv>;
+  return (
+    <Layout>
+      <Box />
+      <h1>
+        <div>Hey, I'm Adam.</div>
+        <div>Full Stach Web</div>
+        <div>Developer</div>
+      </h1>
+    </Layout>
+  );
 };
 
 export default Home;
