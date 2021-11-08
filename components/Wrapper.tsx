@@ -1,8 +1,8 @@
 import React from "react";
-import { Box } from "./Box";
+import { Box, WrapperVariant } from "./Box";
 
 interface WrapperProps {
-  variant?: string;
+  variant?: WrapperVariant;
 }
 
 export const Wrapper: React.FC<WrapperProps> = ({
@@ -10,7 +10,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
   variant = "regular",
 }) => {
   return (
-    <Box variant={variant} padding="10px 30px">
+    <Box variant={variant} padding="0 30px">
       {children}
     </Box>
   );

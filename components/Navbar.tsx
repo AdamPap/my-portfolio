@@ -8,6 +8,8 @@ const StyledNavbar = styled.div`
   padding: 10px 30px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 10vh;
 `;
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {

@@ -54,8 +54,8 @@ const StyledButton = styled.button<ButtonProps>`
 
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
-  animation: 7s linear infinite ${rotationAnimation},
-    9s linear infinite ${movementAnimation};
+  animation: 7s linear infinite ${rotationAnimation};
+  /* ,9s linear infinite ${movementAnimation}; */
 
   &:hover {
     background-color: ${(props) => props.theme.primary};

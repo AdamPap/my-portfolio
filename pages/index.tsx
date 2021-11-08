@@ -22,23 +22,46 @@ const HeroText = styled.div<HeroTextProps>`
   font-size: ${(props) => props.fontSize};
 `;
 
+const HeroSubheader = styled.h3`
+  font-size: 20px;
+  font-weight: normal;
+  display: inline-block;
+`;
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 90vh;
+`;
+
+const StyledH1 = styled.h1`
+  display: inline-block;
+`;
+
 const Home: NextPage = () => {
   return (
     <Layout>
-      <Box flex alignItems="end">
-        <h1>
-          <HeroText fontSize="5rem">Hey, I'm Adam.</HeroText>
-          <HeroOutlinedText fontSize="5rem">
-            <div>Full Stack Web</div>
-            <div>Developer</div>
-          </HeroOutlinedText>
-        </h1>
-        <NextLink href="/test" passHref>
-          <a>
-            <CircleButton variant="outline">View Projects</CircleButton>
-          </a>
-        </NextLink>
-      </Box>
+      <Wrapper>
+        <Box height="100%" flex alignItems="center" justifyContent="start">
+          <Box flex flexDirection="column">
+            <StyledH1>
+              <HeroText fontSize="5rem">Hey, I'm Adam.</HeroText>
+              <HeroOutlinedText fontSize="5rem">
+                Full Stack Web <br />
+                Developer
+              </HeroOutlinedText>
+            </StyledH1>
+            <HeroSubheader>
+              I am currently focusing on building web apps <br />
+              with React and TypeScript!
+            </HeroSubheader>
+          </Box>
+          <NextLink href="/test" passHref>
+            <a>
+              <CircleButton variant="outline">View Projects</CircleButton>
+            </a>
+          </NextLink>
+        </Box>
+      </Wrapper>
     </Layout>
   );
 };
