@@ -25,19 +25,20 @@ const HeroText = styled.div<HeroTextProps>`
 const Home: NextPage = () => {
   return (
     <Layout>
-      <Box />
-      <h1>
-        <HeroText fontSize="5rem">Hey, I'm Adam.</HeroText>
-        <HeroOutlinedText fontSize="5rem">
-          <div>Full Stack Web</div>
-          <div>Developer</div>
-        </HeroOutlinedText>
-      </h1>
-      <NextLink href="/test" passHref>
-        <a>
-          <CircleButton variant="outline">View Projects</CircleButton>
-        </a>
-      </NextLink>
+      <Box flex alignItems="end">
+        <h1>
+          <HeroText fontSize="5rem">Hey, I'm Adam.</HeroText>
+          <HeroOutlinedText fontSize="5rem">
+            <div>Full Stack Web</div>
+            <div>Developer</div>
+          </HeroOutlinedText>
+        </h1>
+        <NextLink href="/test" passHref>
+          <a>
+            <CircleButton variant="outline">View Projects</CircleButton>
+          </a>
+        </NextLink>
+      </Box>
     </Layout>
   );
 };
