@@ -52,6 +52,9 @@ const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
   position: relative;
 
+  margin-top: 170px;
+  margin-left: -60px;
+
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
   animation: 7s linear infinite ${rotationAnimation};

@@ -1,9 +1,11 @@
 import type { NextPage } from "next";
 import NextLink from "next/link";
+import ArrowRight from "../components/ArrowRight";
 import styled from "styled-components";
 import { Box } from "../components/Box";
 import { CircleButton } from "../components/CircleButton";
 import { Layout } from "../components/Layout";
+import StyledButton from "../components/StyledButton";
 
 interface HeroTextProps {
   fontSize: string;
@@ -31,21 +33,43 @@ const HeroSubheader = styled.h3`
 const Wrapper = styled.div`
   width: 100%;
   height: 90vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const StyledH1 = styled.h1`
   display: inline-block;
+  /* width: fit-content; */
+`;
+
+const StyledScrollDown = styled.div`
+  border-top: 1px solid ${(props) => props.theme.primary};
+  padding-top: 4px;
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  margin-top: 170px;
+  width: 90px;
+  font-size: 14px;
 `;
 
 const Home: NextPage = () => {
   return (
     <Layout>
       <Wrapper>
-        <Box height="100%" flex alignItems="center" justifyContent="start">
-          <Box flex flexDirection="column">
+        <Box
+          width="80%"
+          height="100%"
+          // padding="0 40px"
+          margin="0 auto"
+          flex
+          alignItems="center"
+          justifyContent="start"
+        >
+          <Box flex flexDirection="column" alignItems="start">
             <StyledH1>
-              <HeroText fontSize="5rem">Hey, I'm Adam.</HeroText>
-              <HeroOutlinedText fontSize="5rem">
+              <HeroText fontSize="3rem">Hey, I'm Adam.</HeroText>
+              <HeroOutlinedText fontSize="4rem">
                 Full Stack Web <br />
                 Developer
               </HeroOutlinedText>
@@ -54,10 +78,14 @@ const Home: NextPage = () => {
               I am currently focusing on building web apps <br />
               with React and TypeScript!
             </HeroSubheader>
+            <StyledButton>
+              View Projects <ArrowRight />
+            </StyledButton>
+            {/* <StyledScrollDown>Scroll down</StyledScrollDown> */}
           </Box>
           <NextLink href="/test" passHref>
             <a>
-              <CircleButton variant="outline">View Projects</CircleButton>
+              {/* <CircleButton variant="outline">View Projects</CircleButton> */}
             </a>
           </NextLink>
         </Box>

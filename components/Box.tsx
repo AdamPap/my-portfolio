@@ -19,8 +19,10 @@ export type AlignItems =
 export type FlexDirection = "column" | "row";
 
 interface BoxProps {
+  width?: string;
   variant?: WrapperVariant;
   padding?: string;
+  margin?: string;
   flex?: boolean;
   justifyContent?: JustifyContent;
   alignItems?: AlignItems;
@@ -30,8 +32,8 @@ interface BoxProps {
 }
 
 const StyledBox = styled.div<BoxProps>`
-  width: 100%;
-  margin: 0;
+  width: ${(props) => props.width};
+  margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   max-width: ${(props) => (props.variant === "small" ? "400px" : "1200px")};
   display: ${(props) => (props.flex ? "flex" : "block")};
@@ -46,11 +48,13 @@ export const Box: React.FC<BoxProps> = ({
   children,
   variant = "regular",
   padding = "0px",
+  margin = "0px",
   flex,
   flexDirection,
   justifyContent,
   alignItems,
   height,
+  width,
   minHeight,
 }) => {
   return (
@@ -61,7 +65,9 @@ export const Box: React.FC<BoxProps> = ({
       flexDirection={flexDirection}
       variant={variant}
       padding={padding}
+      margin={margin}
       height={height}
+      width={width}
       minHeight={minHeight}
     >
       {children}
