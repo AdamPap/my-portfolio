@@ -10,8 +10,10 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ children, variant }) => {
   return (
     <>
-      <Navbar />
-      <Wrapper variant={variant}>{children}</Wrapper>
+      <Wrapper variant={variant}>
+        <Navbar />
+        {children}
+      </Wrapper>
     </>
   );
 };

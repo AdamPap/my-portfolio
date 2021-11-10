@@ -6,6 +6,7 @@ import { Box } from "../components/Box";
 import { CircleButton } from "../components/CircleButton";
 import { Layout } from "../components/Layout";
 import StyledButton from "../components/StyledButton";
+import { ProjectSection } from "../components/ProjectSection";
 
 interface HeroTextProps {
   fontSize: string;
@@ -58,7 +59,7 @@ const Home: NextPage = () => {
     <Layout>
       <Wrapper>
         <Box
-          width="80%"
+          width="100%"
           height="100%"
           // padding="0 40px"
           margin="0 auto"
@@ -90,6 +91,16 @@ const Home: NextPage = () => {
           </NextLink>
         </Box>
       </Wrapper>
+
+      <ProjectSection>
+        <h1>SECTION 1</h1>
+      </ProjectSection>
+      <ProjectSection>
+        <h1>SECTION 2</h1>
+      </ProjectSection>
+      <ProjectSection>
+        <h1>SECTION 3</h1>
+      </ProjectSection>
     </Layout>
   );
 };

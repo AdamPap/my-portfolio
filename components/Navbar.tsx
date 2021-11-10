@@ -5,7 +5,8 @@ interface NavbarProps {}
 
 const StyledNavbar = styled.div`
   width: 100%;
-  padding: 10px 30px;
+  margin: 0 auto;
+  padding: 10px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;

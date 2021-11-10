@@ -10,7 +10,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
   variant = "regular",
 }) => {
   return (
-    <Box variant={variant} padding="0 30px">
+    <Box variant={variant} padding="0 60px">
       {children}
     </Box>
   );
