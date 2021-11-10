@@ -9,7 +9,7 @@ import StyledButton from "../components/StyledButton";
 import { ProjectSection } from "../components/ProjectSection";
 
 interface HeroTextProps {
-  fontSize: string;
+  fontSize?: string;
 }
 
 const HeroOutlinedText = styled.div<HeroTextProps>`
@@ -33,7 +33,7 @@ const HeroSubheader = styled.h3`
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,22 +84,26 @@ const Home: NextPage = () => {
             </StyledButton>
             {/* <StyledScrollDown>Scroll down</StyledScrollDown> */}
           </Box>
-          <NextLink href="/test" passHref>
+          {/* <NextLink href="/test" passHref>
             <a>
-              {/* <CircleButton variant="outline">View Projects</CircleButton> */}
+              <CircleButton variant="outline">View Projects</CircleButton>
             </a>
-          </NextLink>
+          </NextLink> */}
         </Box>
       </Wrapper>
 
+      <StyledH1>
+        <HeroOutlinedText fontSize="4rem">Projects</HeroOutlinedText>
+      </StyledH1>
+
       <ProjectSection>
-        <h1>SECTION 1</h1>
+        <h2>Ticketing</h2>
       </ProjectSection>
       <ProjectSection>
-        <h1>SECTION 2</h1>
+        <h2>Next Journey</h2>
       </ProjectSection>
       <ProjectSection>
-        <h1>SECTION 3</h1>
+        <h2>Colorful</h2>
       </ProjectSection>
     </Layout>
   );
