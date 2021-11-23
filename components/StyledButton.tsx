@@ -1,13 +1,19 @@
 import styled from "styled-components";
 import ArrowRight from "../components/ArrowRight";
 
-const StyledButton = styled.button`
+interface StyledButtonProps {
+  margin?: string;
+  padding?: string;
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
   /* display: inline-block; */
   border: none;
   border-bottom: 1px solid ${(props) => props.theme.primary};
   color: ${(props) => props.theme.primary};
   background-color: ${(props) => props.theme.bg};
-  padding: 15px 20px;
+  margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
   font-size: 16px;
   display: flex;
   align-items: center;

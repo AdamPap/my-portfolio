@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import React from "react";
+import StyledButton from "./StyledButton";
+import ArrowRight from "../components/ArrowRight";
 
 interface StyledNumberProps {
   fontSize?: string;
@@ -10,6 +12,9 @@ const StyledProjectSection = styled.div`
   width: 100%;
   position: relative;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const StyledNumber = styled.div<StyledNumberProps>`
@@ -20,9 +25,31 @@ const StyledNumber = styled.div<StyledNumberProps>`
   font-size: ${(props) => props.fontSize};
   font-weight: bolder;
   top: 50%;
-  right: 0;
+  right: -30px;
   transform: translate(0, -50%) rotate(-90deg);
   position: absolute;
+`;
+
+const StyledImageWrapper = styled.div`
+  width: 70%;
+  height: 50%;
+  max-height: 80vh;
+`;
+
+const StyledProjectImage = styled.div`
+  background-image: url("images/mountain.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  border-style: none !important;
+  outline: none;
+`;
+
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  margin-top: 20px;
 `;
 
 interface ProjectSectionProps {}
@@ -31,9 +58,18 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
   return (
     <StyledProjectSection>
       {children}
-      <StyledNumber fontSize="15rem">
-        <span>01</span>
-      </StyledNumber>
+      <StyledImageWrapper>
+        <StyledProjectImage />
+      </StyledImageWrapper>
+      <StyledButtonWrapper>
+        <StyledButton margin="0 30px 0 0" padding="10px 16px">
+          Github <ArrowRight />
+        </StyledButton>
+        <StyledButton padding="10px 16px">
+          Live <ArrowRight />
+        </StyledButton>
+      </StyledButtonWrapper>
+      <StyledNumber fontSize="15rem">01</StyledNumber>
     </StyledProjectSection>
   );
 };

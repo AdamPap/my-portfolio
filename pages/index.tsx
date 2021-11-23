@@ -54,6 +54,8 @@ const StyledScrollDown = styled.div`
   font-size: 14px;
 `;
 
+const StyledProjectsWrapper = styled.div``;
+
 const Home: NextPage = () => {
   return (
     <Layout>
@@ -79,7 +81,7 @@ const Home: NextPage = () => {
               I am currently focusing on building web apps <br />
               with React and TypeScript!
             </HeroSubheader>
-            <StyledButton>
+            <StyledButton padding="15px 20px">
               View Projects <ArrowRight />
             </StyledButton>
             {/* <StyledScrollDown>Scroll down</StyledScrollDown> */}
@@ -96,15 +98,17 @@ const Home: NextPage = () => {
         <HeroOutlinedText fontSize="4rem">Projects</HeroOutlinedText>
       </StyledH1>
 
-      <ProjectSection>
-        <h2>Ticketing</h2>
-      </ProjectSection>
-      <ProjectSection>
-        <h2>Next Journey</h2>
-      </ProjectSection>
-      <ProjectSection>
-        <h2>Colorful</h2>
-      </ProjectSection>
+      <StyledProjectsWrapper>
+        <ProjectSection>
+          <h2>Ticketing</h2>
+        </ProjectSection>
+        <ProjectSection>
+          <h2>Next Journey</h2>
+        </ProjectSection>
+        <ProjectSection>
+          <h2>Colorful</h2>
+        </ProjectSection>
+      </StyledProjectsWrapper>
     </Layout>
   );
 };
