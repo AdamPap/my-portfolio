@@ -91,7 +91,7 @@ const Home: NextPage = () => {
         start: "top top",
         trigger: projectsWrapperRef.current,
         pin: true,
-        scrub: 1,
+        scrub: 2,
         snap: 0,
         markers: true,
         // base vertical scrolling on how wide the container is so
@@ -99,6 +99,35 @@ const Home: NextPage = () => {
         end: "+=4500",
       },
     });
+
+    let proxy = { skew: 0 },
+      skewSetter = gsap.quickSetter(sections, "skewX", "deg"), // fast
+      clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
+
+    ScrollTrigger.create({
+      trigger: ".first",
+      start: "bottom bottom",
+      endTrigger: ".last",
+      end: "bottom bottom",
+      // scroller: projectsWrapperRef.current,
+      onUpdate: (self) => {
+        let skew = clamp(self.getVelocity() / -300);
+        // only do something if the skew is MORE severe. Remember, we're always tweening back to 0, so if the user slows their scrolling quickly, it's more natural to just let the tween handle that smoothly rather than jumping to the smaller skew.
+        if (Math.abs(skew) > Math.abs(proxy.skew)) {
+          proxy.skew = skew;
+          gsap.to(proxy, {
+            skew: 0,
+            duration: 0.8,
+            ease: "power3",
+            overwrite: true,
+            onUpdate: () => skewSetter(proxy.skew),
+          });
+        }
+      },
+    });
+
+    // make the right edge "stick" to the scroll bar. force3D: true improves performance
+    gsap.set(sections, { transformOrigin: "right center", force3D: true });
   }, []);
 
   const addToRefs = (el: HTMLDivElement) => {
@@ -149,7 +178,11 @@ const Home: NextPage = () => {
           <HeroOutlinedText fontSize="4rem">Projects</HeroOutlinedText>
         </StyledH1>
         <StyledProjectsWrapper ref={projectsWrapperRef} numOfChildren={3}>
-          <div style={{ width: "100vw" }} ref={addToRefs}>
+          <div
+            className="first"
+            style={{ width: "100vw", marginLeft: "30vw" }}
+            ref={addToRefs}
+          >
             <ProjectSection>
               <h2>Ticketing</h2>
             </ProjectSection>
@@ -159,7 +192,7 @@ const Home: NextPage = () => {
               <h2>Next Journey</h2>
             </ProjectSection>
           </div>
-          <div style={{ width: "100vw" }} ref={addToRefs}>
+          <div className=".last" style={{ width: "100vw" }} ref={addToRefs}>
             <ProjectSection>
               <h2>Colorful</h2>
             </ProjectSection>
