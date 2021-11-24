@@ -7,9 +7,18 @@ import { CircleButton } from "../components/CircleButton";
 import { Layout } from "../components/Layout";
 import StyledButton from "../components/StyledButton";
 import { ProjectSection } from "../components/ProjectSection";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { useEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface HeroTextProps {
   fontSize?: string;
+}
+
+interface StyledProjectWrapperProps {
+  numOfChildren: number;
 }
 
 const HeroOutlinedText = styled.div<HeroTextProps>`
@@ -37,6 +46,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow-x: hidden;
 `;
 
 const StyledH1 = styled.h1`
@@ -54,62 +64,112 @@ const StyledScrollDown = styled.div`
   font-size: 14px;
 `;
 
-const StyledProjectsWrapper = styled.div``;
+const StyledProjectsWrapper = styled.div<StyledProjectWrapperProps>`
+  /* width: ${(props) => props.numOfChildren * 100}vw; */
+  width: 360vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+`;
 
 const Home: NextPage = () => {
+  const initialValues = [] as HTMLDivElement[];
+
+  const projectSectionsRefs = useRef(initialValues);
+  const projectsWrapperRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  projectSectionsRefs.current = [];
+
+  useEffect(() => {
+    let sections = gsap.utils.toArray(projectSectionsRefs.current);
+
+    gsap.to(sections, {
+      xPercent: -130 * (sections.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        start: "top top",
+        trigger: projectsWrapperRef.current,
+        pin: true,
+        scrub: 1,
+        snap: 0,
+        markers: true,
+        // base vertical scrolling on how wide the container is so
+        // it feels more natural.
+        end: "+=4500",
+      },
+    });
+  }, []);
+
+  const addToRefs = (el: HTMLDivElement) => {
+    if (el && !projectSectionsRefs.current.includes(el)) {
+      projectSectionsRefs.current.push(el);
+    }
+  };
+
   return (
-    <Layout>
-      <Wrapper>
-        <Box
-          width="100%"
-          height="100%"
-          // padding="0 40px"
-          margin="0 auto"
-          flex
-          alignItems="center"
-          justifyContent="start"
-        >
-          <Box flex flexDirection="column" alignItems="start">
-            <StyledH1>
-              <HeroText fontSize="3rem">Hey, I'm Adam.</HeroText>
-              <HeroOutlinedText fontSize="4rem">
-                Full Stack Web <br />
-                Developer
-              </HeroOutlinedText>
-            </StyledH1>
-            <HeroSubheader>
-              I am currently focusing on building web apps <br />
-              with React and TypeScript!
-            </HeroSubheader>
-            <StyledButton padding="15px 20px">
-              View Projects <ArrowRight />
-            </StyledButton>
-            {/* <StyledScrollDown>Scroll down</StyledScrollDown> */}
-          </Box>
-          {/* <NextLink href="/test" passHref>
+    <>
+      <Layout>
+        <Wrapper>
+          <Box
+            width="100%"
+            height="100%"
+            // padding="0 40px"
+            margin="0 auto"
+            flex
+            alignItems="center"
+            justifyContent="start"
+          >
+            <Box flex flexDirection="column" alignItems="start">
+              <StyledH1>
+                <HeroText fontSize="3rem">Hey, I'm Adam.</HeroText>
+                <HeroOutlinedText fontSize="4rem">
+                  Full Stack Web <br />
+                  Developer
+                </HeroOutlinedText>
+              </StyledH1>
+              <HeroSubheader>
+                I am currently focusing on building web apps <br />
+                with React and TypeScript!
+              </HeroSubheader>
+              <StyledButton padding="15px 20px">
+                View Projects <ArrowRight />
+              </StyledButton>
+              {/* <StyledScrollDown>Scroll down</StyledScrollDown> */}
+            </Box>
+            {/* <NextLink href="/test" passHref>
             <a>
               <CircleButton variant="outline">View Projects</CircleButton>
             </a>
           </NextLink> */}
-        </Box>
-      </Wrapper>
+          </Box>
+        </Wrapper>
 
-      <StyledH1>
-        <HeroOutlinedText fontSize="4rem">Projects</HeroOutlinedText>
-      </StyledH1>
-
-      <StyledProjectsWrapper>
-        <ProjectSection>
-          <h2>Ticketing</h2>
-        </ProjectSection>
-        <ProjectSection>
-          <h2>Next Journey</h2>
-        </ProjectSection>
-        <ProjectSection>
-          <h2>Colorful</h2>
-        </ProjectSection>
-      </StyledProjectsWrapper>
-    </Layout>
+        <StyledH1>
+          <HeroOutlinedText fontSize="4rem">Projects</HeroOutlinedText>
+        </StyledH1>
+        <StyledProjectsWrapper ref={projectsWrapperRef} numOfChildren={3}>
+          <div style={{ width: "100vw" }} ref={addToRefs}>
+            <ProjectSection>
+              <h2>Ticketing</h2>
+            </ProjectSection>
+          </div>
+          <div style={{ width: "100vw" }} ref={addToRefs}>
+            <ProjectSection>
+              <h2>Next Journey</h2>
+            </ProjectSection>
+          </div>
+          <div style={{ width: "100vw" }} ref={addToRefs}>
+            <ProjectSection>
+              <h2>Colorful</h2>
+            </ProjectSection>
+          </div>
+        </StyledProjectsWrapper>
+        <div
+          style={{ width: "100vw", height: "100vh", background: "red" }}
+        ></div>
+      </Layout>
+    </>
   );
 };
 

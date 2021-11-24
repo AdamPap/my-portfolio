@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { MutableRefObject, Ref } from "react";
 import StyledButton from "./StyledButton";
 import ArrowRight from "../components/ArrowRight";
 
@@ -10,8 +10,10 @@ interface StyledNumberProps {
 const StyledProjectSection = styled.div`
   height: 90vh;
   width: 100%;
+  max-width: 90vw;
+  /* min-width: 50vw; */
   position: relative;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   display: flex;
   flex-direction: column;
   justify-content: center;
