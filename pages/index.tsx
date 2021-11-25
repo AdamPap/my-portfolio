@@ -10,6 +10,7 @@ import { ProjectSection } from "../components/ProjectSection";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import { ContactSection } from "../components/ContactSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -91,7 +92,7 @@ const Home: NextPage = () => {
         start: "top top",
         trigger: projectsWrapperRef.current,
         pin: true,
-        scrub: 2,
+        scrub: 1.5,
         snap: 0,
         markers: true,
         // base vertical scrolling on how wide the container is so
@@ -105,10 +106,10 @@ const Home: NextPage = () => {
       clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
 
     ScrollTrigger.create({
-      trigger: ".first",
-      start: "bottom bottom",
-      endTrigger: ".last",
-      end: "bottom bottom",
+      // trigger: ".first",
+      // start: "bottom bottom",
+      // endTrigger: "last",
+      // end: "bottom bottom",
       // scroller: projectsWrapperRef.current,
       onUpdate: (self) => {
         let skew = clamp(self.getVelocity() / -300);
@@ -198,9 +199,7 @@ const Home: NextPage = () => {
             </ProjectSection>
           </div>
         </StyledProjectsWrapper>
-        <div
-          style={{ width: "100vw", height: "100vh", background: "red" }}
-        ></div>
+        <ContactSection />
       </Layout>
     </>
   );
