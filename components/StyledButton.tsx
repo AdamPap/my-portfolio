@@ -21,6 +21,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   &:hover {
     background-color: ${(props) => props.theme.primary};
     color: ${(props) => props.theme.bg};
+    cursor: pointer;
   }
   &:hover ${ArrowRight} {
     margin-left: 20px;
