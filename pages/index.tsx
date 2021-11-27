@@ -11,6 +11,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import { ContactSection } from "../components/ContactSection";
+import { ContactSection2 } from "../components/ContactSection2";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,11 +29,13 @@ const HeroOutlinedText = styled.div<HeroTextProps>`
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: ${(props) => props.theme.primary};
   font-size: ${(props) => props.fontSize};
+  text-transform: uppercase;
 `;
 
 const HeroText = styled.div<HeroTextProps>`
   color: ${(props) => props.theme.primary};
   font-size: ${(props) => props.fontSize};
+  /* text-transform: uppercase; */
 `;
 
 const HeroSubheader = styled.h3`
@@ -84,6 +87,16 @@ const MouseFollower = styled.div`
   top: 0;
   left: 0;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const MouseText = styled.div`
+  color: ${(props) => props.theme.bg};
+  visibility: hidden;
+  font-size: 8px;
+  text-align: center;
 `;
 
 const Home: NextPage = () => {
@@ -177,7 +190,9 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <MouseFollower className="mouseFollower" />
+      <MouseFollower className="mouseFollower">
+        <MouseText className="mouseText">EMAIL ME</MouseText>
+      </MouseFollower>
       <Layout>
         <Wrapper>
           <Box
@@ -192,7 +207,7 @@ const Home: NextPage = () => {
             <Box flex flexDirection="column" alignItems="start">
               <StyledH1>
                 <HeroText fontSize="3rem">Hey, I'm Adam.</HeroText>
-                <HeroOutlinedText fontSize="4rem">
+                <HeroOutlinedText fontSize="5rem">
                   Full Stack Web <br />
                   Developer
                 </HeroOutlinedText>
@@ -238,7 +253,8 @@ const Home: NextPage = () => {
             </ProjectSection>
           </div>
         </StyledProjectsWrapper>
-        <ContactSection />
+        {/* <ContactSection /> */}
+        <ContactSection2 />
       </Layout>
     </>
   );

@@ -44,6 +44,9 @@ const StyledInput = styled.input`
   text-align: center;
   margin-left: 1rem;
   flex-grow: 1;
+  ::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+  }
 `;
 
 const StyledText = styled.div`
@@ -55,26 +58,32 @@ const StyledWrapper = styled.div`
   display: flex;
 `;
 
+const StyledForm = styled.form`
+  margin-top: 3rem;
+`;
+
 export const ContactSection: React.FC<ContactSectionProps> = () => {
   return (
     <StyledContactSection>
       <StyledSectionWrapper>
         <StyledSmallTitle>Are you interested in my work?</StyledSmallTitle>
         <StyledBigTitle>Contact Me!</StyledBigTitle>
-        <StyledEmail>adampapamast@gmail.com</StyledEmail>
-        <StyledText>Hello,</StyledText>
-        <StyledWrapper>
-          <StyledText>my name is</StyledText>
-          <StyledInput placeholder="Enter your name here" />
-        </StyledWrapper>
-        <StyledWrapper>
-          <StyledText>this is my email</StyledText>
-          <StyledInput placeholder="Enter your email here" />
-        </StyledWrapper>
-        <StyledWrapper>
-          <StyledText>I am interested in</StyledText>
-          <StyledInput placeholder="Enter your project idea here" />
-        </StyledWrapper>
+        {/* <StyledEmail>adampapamast@gmail.com</StyledEmail> */}
+        <StyledForm>
+          <StyledText>Hello,</StyledText>
+          <StyledWrapper>
+            <StyledText>my name is</StyledText>
+            <StyledInput placeholder="Enter your name here" />
+          </StyledWrapper>
+          <StyledWrapper>
+            <StyledText>this is my email</StyledText>
+            <StyledInput placeholder="Enter your email here" />
+          </StyledWrapper>
+          <StyledWrapper>
+            <StyledText>I am interested in</StyledText>
+            <StyledInput placeholder="Enter your project idea here" />
+          </StyledWrapper>
+        </StyledForm>
       </StyledSectionWrapper>
     </StyledContactSection>
   );
