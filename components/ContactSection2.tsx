@@ -17,7 +17,7 @@ const StyledContactSection = styled.div`
 `;
 
 const StyledH2 = styled.h2`
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: normal;
   color: ${(props) => props.theme.primary};
 `;
@@ -32,6 +32,10 @@ const StyledIconsWrapper = styled.div`
   justify-content: center;
   font-size: 3rem;
   margin-top: 2rem;
+`;
+
+const GithubWrapper = styled.div`
+  /* TODO: */
 `;
 
 export const ContactSection2: React.FC<ContactSection2Props> = ({}) => {
