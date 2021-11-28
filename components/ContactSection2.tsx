@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import React, { useEffect } from "react";
+import NextLink from "next/link";
 import { Github } from "react-bootstrap-icons";
 import styled from "styled-components";
 import { theme } from "../style/theme.config";
@@ -92,7 +93,15 @@ export const ContactSection2: React.FC<ContactSection2Props> = ({}) => {
           </StyledEmail>
         </div>
         <StyledIconsWrapper>
-          <Github />
+          {/* <NextLink href="https://github.com/AdamPap"> */}
+          <a
+            target="_blank"
+            href="https://github.com/AdamPap"
+            rel="noopener noreferrer"
+          >
+            <Github />
+          </a>
+          {/* </NextLink> */}
         </StyledIconsWrapper>
       </div>
     </StyledContactSection>
