@@ -23,6 +23,18 @@ const StyledLine = styled.div`
   align-self: flex-start;
 `;
 
+const StyledRow = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;
+
+const StyledLoaderText = styled.div`
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  margin-right: 3rem;
+`;
+
 export const Loader: React.FC<LoaderProps> = ({}) => {
   const counterRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const lineRef = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -52,7 +64,10 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
 
   return (
     <StyledLoader>
-      <div ref={counterRef}>0</div>
+      <StyledRow>
+        <StyledLoaderText>This is a loader</StyledLoaderText>
+        <div ref={counterRef}>0</div>
+      </StyledRow>
       <StyledLine ref={lineRef} />
     </StyledLoader>
   );
