@@ -7,15 +7,25 @@ interface LoaderProps {}
 const StyledLoader = styled.div`
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  font-size: 4rem;
+  align-items: flex-end;
+  padding: 3rem;
+  font-size: 6rem;
   color: ${(props) => props.theme.primary};
+`;
+
+const StyledLine = styled.div`
+  width: 0%;
+  border: 1px solid ${(props) => props.theme.primary};
+  align-self: flex-start;
 `;
 
 export const Loader: React.FC<LoaderProps> = ({}) => {
   const counterRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const lineRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   useEffect(() => {
     let counter = { val: 0 };
@@ -23,7 +33,7 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
 
     gsap.to(counter, {
       val: endVal,
-      duration: 3,
+      duration: 4,
       roundProps: "val",
       onUpdate: function () {
         if (counterRef.current) {
@@ -31,13 +41,19 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
         }
       },
     });
+
+    let endWidth = "100%";
+
+    gsap.to(lineRef.current, {
+      width: endWidth,
+      duration: 4,
+    });
   }, []);
 
   return (
     <StyledLoader>
-      <div id="counter" ref={counterRef}>
-        0
-      </div>
+      <div ref={counterRef}>0</div>
+      <StyledLine ref={lineRef} />
     </StyledLoader>
   );
 };

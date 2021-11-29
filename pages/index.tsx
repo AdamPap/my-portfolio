@@ -89,7 +89,7 @@ const Home: NextPage = () => {
         pin: true,
         scrub: 1.5,
         snap: 0,
-        markers: true,
+        // markers: true,
         // base vertical scrolling on how wide the container is so
         // it feels more natural.
         end: "+=4500",
