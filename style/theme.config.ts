@@ -17,7 +17,7 @@ export interface ThemeProps {
 
 export const theme = {
   bg: "#111111",
-  primary: "#08FDD9",
+  primary: "#0BBDA3",
   white: "white",
   wrapper: {
     regular: "1200px",
