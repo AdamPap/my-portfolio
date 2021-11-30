@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Loader } from "../components/Loader";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
@@ -15,14 +15,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {!isLoading ? (
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      ) : (
-        <Loader />
-      )}
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        {!isLoading ? <Component {...pageProps} /> : <Loader />}
+      </ThemeProvider>
     </>
   );
 }

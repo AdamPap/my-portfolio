@@ -1,4 +1,5 @@
-import React from "react";
+import gsap from "gsap";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { CircleButton } from "./CircleButton";
 
@@ -28,26 +29,68 @@ const StyledHeroHeader = styled.h1`
   font-weight: normal;
   margin: 0;
   letter-spacing: 0.2rem;
+  overflow: hidden;
 `;
 
 const StyledHeroText = styled.p`
   font-size: 1.6rem;
   margin: 0;
   text-transform: uppercase;
+  overflow: hidden;
+`;
+
+const StyledSpan = styled.span`
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
 `;
 
 export const Hero: React.FC<HeroProps> = ({}) => {
+  const initialValues = [] as HTMLSpanElement[];
+  const spanRefs = useRef(initialValues);
+  spanRefs.current = [];
+
+  const addToRefs = (el: HTMLSpanElement) => {
+    if (el && !spanRefs.current.includes(el)) {
+      spanRefs.current.push(el);
+    }
+  };
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      defaults: { duration: 0.6, ease: "SlowMo.easeOut" },
+    });
+
+    tl.to(spanRefs.current, {
+      y: 0,
+      opacity: 1,
+      stagger: 0.3,
+    });
+  }, []);
+
   return (
     <StyledHeroWrapper>
       <StyledRow>
-        <StyledHeroHeader>Full Stack</StyledHeroHeader>
+        <StyledHeroHeader>
+          <StyledSpan ref={addToRefs}>Full Stack</StyledSpan>
+        </StyledHeroHeader>
       </StyledRow>
       <StyledRow>
-        <StyledHeroHeader>Web</StyledHeroHeader>
+        <StyledHeroHeader>
+          <StyledSpan ref={addToRefs}>Web</StyledSpan>
+        </StyledHeroHeader>
         <StyledCol>
-          <StyledHeroText>Hey, I am Adam.</StyledHeroText>
-          <StyledHeroText>I enjoy crafting web applications</StyledHeroText>
-          <StyledHeroText>with Typescript and React.</StyledHeroText>
+          <StyledHeroText>
+            <StyledSpan ref={addToRefs}>Hey, I am Adam.</StyledSpan>
+          </StyledHeroText>
+          <StyledHeroText>
+            <StyledSpan ref={addToRefs}>
+              I enjoy crafting web applications
+            </StyledSpan>
+          </StyledHeroText>
+          <StyledHeroText>
+            <StyledSpan ref={addToRefs}>with Typescript and React.</StyledSpan>
+          </StyledHeroText>
         </StyledCol>
         <CircleButton variant="outline">View projects</CircleButton>
       </StyledRow>
@@ -55,7 +98,9 @@ export const Hero: React.FC<HeroProps> = ({}) => {
         <CircleButton margin="0 4rem" variant="outline">
           Contact me
         </CircleButton>
-        <StyledHeroHeader>Developer</StyledHeroHeader>
+        <StyledHeroHeader>
+          <StyledSpan ref={addToRefs}>Developer</StyledSpan>
+        </StyledHeroHeader>
       </StyledRow>
     </StyledHeroWrapper>
   );

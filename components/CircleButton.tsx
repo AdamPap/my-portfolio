@@ -42,7 +42,7 @@ const StyledButton = styled.button<ButtonProps>`
   position: relative;
 
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  animation: 0.3s linear forwards ${rotationIn};
+  animation: 0.4s linear forwards ${rotationIn};
 
   &:hover {
     background-color: ${(props) => props.theme.primary};
