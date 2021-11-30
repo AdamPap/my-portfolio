@@ -17,7 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        {!isLoading ? <Component {...pageProps} /> : <Loader />}
+        {/* {!isLoading ?  */}
+        <Component {...pageProps} />
+        {/* : <Loader />} */}
       </ThemeProvider>
     </>
   );

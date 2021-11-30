@@ -58,13 +58,13 @@ export const Hero: React.FC<HeroProps> = ({}) => {
 
   useEffect(() => {
     const tl = gsap.timeline({
-      defaults: { duration: 0.6, ease: "SlowMo.easeOut" },
+      defaults: { duration: 1.5, ease: "power4" },
     });
 
     tl.to(spanRefs.current, {
       y: 0,
       opacity: 1,
-      stagger: 0.3,
+      stagger: 0.15,
     });
   }, []);
 

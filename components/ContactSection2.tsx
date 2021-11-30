@@ -92,7 +92,7 @@ export const ContactSection2: React.FC<ContactSection2Props> = ({}) => {
       <div>
         <StyledH2>Are you interested in my work ?</StyledH2>
         <div className="emailContainer">
-          <StyledEmail className="email" href="mailto:adampapamast@hotmail.com">
+          <StyledEmail className="email" href="mailto:adampapamast@gmail.com">
             adampapamast@gmail.com
           </StyledEmail>
         </div>
