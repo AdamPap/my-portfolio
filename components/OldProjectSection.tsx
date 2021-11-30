@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import React, { MutableRefObject, Ref } from "react";
+import React, { MutableRefObject, Ref, useEffect, useRef } from "react";
 import StyledButton from "./StyledButton";
 import ArrowRight from "../components/ArrowRight";
+import gsap from "gsap";
 
 interface StyledNumberProps {
   fontSize?: string;
@@ -22,7 +23,7 @@ const StyledProjectSection = styled.div`
 const StyledNumber = styled.div<StyledNumberProps>`
   color: ${(props) => props.theme.primary};
   -webkit-text-fill-color: ${(props) => props.theme.bg};
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: ${(props) => props.theme.primary};
   font-size: ${(props) => props.fontSize};
   font-weight: bolder;
@@ -30,12 +31,25 @@ const StyledNumber = styled.div<StyledNumberProps>`
   right: -30px;
   transform: translate(0, -50%) rotate(-90deg);
   position: absolute;
+  overflow: hidden;
 `;
 
 const StyledImageWrapper = styled.div`
   width: 70%;
   height: 50%;
   max-height: 80vh;
+  /*  */
+  overflow: hidden;
+  position: relative;
+`;
+
+const StyledImageOverlay = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: ${(props) => props.theme.bg};
 `;
 
 const StyledProjectImage = styled.div`
@@ -47,6 +61,8 @@ const StyledProjectImage = styled.div`
   width: 100%;
   border-style: none !important;
   outline: none;
+  /* TODO: */
+  /* background-attachment: fixed; */
 `;
 
 const StyledButtonWrapper = styled.div`
@@ -54,14 +70,42 @@ const StyledButtonWrapper = styled.div`
   margin-top: 20px;
 `;
 
+const StyledSpan = styled.span`
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+`;
+
 interface ProjectSectionProps {}
 
 export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
+  const imgWrapperRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const imgRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const overlayRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const numberRef = useRef() as React.MutableRefObject<HTMLSpanElement>;
+
+  useEffect(() => {
+    gsap.to(overlayRef.current, {
+      width: "0%",
+      duration: 1.4,
+      ease: "Power2.easeInOut",
+      scrollTrigger: imgRef.current,
+    });
+    gsap.to(numberRef.current, {
+      duration: 0.6,
+      y: 0,
+      opacity: 1,
+      delay: 0.8,
+      scrollTrigger: imgRef.current,
+    });
+  }, []);
+
   return (
     <StyledProjectSection>
       {children}
-      <StyledImageWrapper>
-        <StyledProjectImage />
+      <StyledImageWrapper ref={imgWrapperRef}>
+        <StyledImageOverlay ref={overlayRef} />
+        <StyledProjectImage ref={imgRef} />
       </StyledImageWrapper>
       <StyledButtonWrapper>
         <StyledButton margin="0 30px 0 0" padding="10px 16px">
@@ -71,7 +115,9 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
           Live <ArrowRight />
         </StyledButton>
       </StyledButtonWrapper>
-      <StyledNumber fontSize="15rem">01</StyledNumber>
+      <StyledNumber fontSize="15rem">
+        <StyledSpan ref={numberRef}>01</StyledSpan>
+      </StyledNumber>
     </StyledProjectSection>
   );
 };
