@@ -76,6 +76,11 @@ const StyledSpan = styled.span`
   opacity: 0;
 `;
 
+const StyledProjectHeader = styled.h1`
+  /* font-size: 1rem; */
+  text-transform: uppercase;
+`;
+
 interface ProjectSectionProps {}
 
 export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
@@ -92,10 +97,11 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
       scrollTrigger: imgRef.current,
     });
     gsap.to(numberRef.current, {
-      duration: 0.6,
+      duration: 1.2,
       y: 0,
       opacity: 1,
       delay: 0.8,
+      ease: "Power2.easeInOut",
       scrollTrigger: imgRef.current,
     });
   }, []);
@@ -103,6 +109,7 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
   return (
     <StyledProjectSection>
       {children}
+      <StyledProjectHeader>Next Journey</StyledProjectHeader>
       <StyledImageWrapper ref={imgWrapperRef}>
         <StyledImageOverlay ref={overlayRef} />
         <StyledProjectImage ref={imgRef} />

@@ -14,10 +14,11 @@ const StyledButton = styled.button<StyledButtonProps>`
   background-color: ${(props) => props.theme.bg};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
-  font-size: 16px;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
   &:hover {
     background-color: ${(props) => props.theme.primary};
     color: ${(props) => props.theme.bg};
