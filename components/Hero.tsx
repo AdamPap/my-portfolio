@@ -41,8 +41,8 @@ const StyledHeroText = styled.p`
 
 const StyledSpan = styled.span`
   display: inline-block;
-  transform: translateY(100%);
-  opacity: 0;
+  /* transform: translateY(100%); */
+  /* opacity: 0; */
 `;
 
 export const Hero: React.FC<HeroProps> = ({}) => {
@@ -61,11 +61,16 @@ export const Hero: React.FC<HeroProps> = ({}) => {
       defaults: { duration: 1.5, ease: "power4" },
     });
 
-    tl.to(spanRefs.current, {
-      y: 0,
-      opacity: 1,
-      stagger: 0.15,
-    });
+    tl.fromTo(
+      spanRefs.current,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        rotation: 0.01,
+        opacity: 1,
+        stagger: 0.15,
+      }
+    );
   }, []);
 
   return (

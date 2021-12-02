@@ -31,15 +31,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        {!isLoading ? (
-          <StyledViewport ref={viewportRef}>
-            <SmoothScrollContainer isLoading={isLoading}>
-              <Component {...pageProps} />
-            </SmoothScrollContainer>
-          </StyledViewport>
-        ) : (
-          <Loader />
-        )}
+        {/* {!isLoading ? ( */}
+        {/* <StyledViewport ref={viewportRef}>
+          <SmoothScrollContainer isLoading={isLoading}> */}
+        <Component {...pageProps} />
+        {/* </SmoothScrollContainer>
+        </StyledViewport> */}
+        {/* // ) : (
+        //   <Loader />
+        // )} */}
       </ThemeProvider>
     </>
   );

@@ -37,6 +37,7 @@ export const SmoothScrollContainer: React.FC<SmoothScrollContainerProps> = ({
       y: () => -(height - document.documentElement.clientHeight),
       // y: () => -1000,
       ease: "none",
+      rotation: 0.01,
       scrollTrigger: {
         trigger: document.body,
         start: "top top",

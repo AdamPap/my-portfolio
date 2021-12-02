@@ -39,53 +39,53 @@ const GithubWrapper = styled.div`
 `;
 
 export const ContactSection2: React.FC<ContactSection2Props> = ({}) => {
-  useEffect(() => {
-    document
-      .querySelector(".emailContainer")
-      ?.addEventListener("mouseleave", () => {
-        // gsap.to(".emailContainer", { duration: 0.3, height: 150, width: 150 });
-        gsap.to(".mouseFollower", {
-          duration: 0.3,
-          scale: 1,
-          x: 0,
-          y: 0,
-          background: "transparent",
-        });
-        gsap.to(".mouseText", { visibility: "hidden" });
-      });
+  // useEffect(() => {
+  //   document
+  //     .querySelector(".emailContainer")
+  //     ?.addEventListener("mouseleave", () => {
+  //       // gsap.to(".emailContainer", { duration: 0.3, height: 150, width: 150 });
+  //       gsap.to(".mouseFollower", {
+  //         duration: 0.3,
+  //         scale: 1,
+  //         x: 0,
+  //         y: 0,
+  //         background: "transparent",
+  //       });
+  //       gsap.to(".mouseText", { visibility: "hidden" });
+  //     });
 
-    document
-      .querySelector(".emailContainer")
-      ?.addEventListener("mouseenter", () => {
-        // gsap.to(".emailContainer", { duration: 0.3, height: 200, width: 200 });
-        gsap.to(".mouseFollower", {
-          duration: 0.3,
-          scale: 2.4,
-          background: theme.primary,
-        });
-        gsap.to(".mouseText", { visibility: "visible" });
-      });
+  //   document
+  //     .querySelector(".emailContainer")
+  //     ?.addEventListener("mouseenter", () => {
+  //       // gsap.to(".emailContainer", { duration: 0.3, height: 200, width: 200 });
+  //       gsap.to(".mouseFollower", {
+  //         duration: 0.3,
+  //         scale: 2.4,
+  //         background: theme.primary,
+  //       });
+  //       gsap.to(".mouseText", { visibility: "visible" });
+  //     });
 
-    // document.querySelector(".emailContainer").mousemove(function (e) {
-    //   callParallax(e);
-    // });
+  //   // document.querySelector(".emailContainer").mousemove(function (e) {
+  //   //   callParallax(e);
+  //   // });
 
-    // function callParallax(e) {
-    //   parallaxIt(e, ".email", 80);
-    // }
+  //   // function callParallax(e) {
+  //   //   parallaxIt(e, ".email", 80);
+  //   // }
 
-    // function parallaxIt(e, target, movement) {
-    //   var cont = document.querySelector(".container");
-    //   var relX = e.pageX - cont.offset().left;
-    //   var relY = e.pageY - cont.offset().top;
+  //   // function parallaxIt(e, target, movement) {
+  //   //   var cont = document.querySelector(".container");
+  //   //   var relX = e.pageX - cont.offset().left;
+  //   //   var relY = e.pageY - cont.offset().top;
 
-    //   TweenMax.to(target, 0.3, {
-    //     x: ((relX - $this.width() / 2) / $this.width()) * movement,
-    //     y: ((relY - $this.height() / 2) / $this.height()) * movement,
-    //     ease: Power2.easeOut,
-    //   });
-    // }
-  }, []);
+  //   //   TweenMax.to(target, 0.3, {
+  //   //     x: ((relX - $this.width() / 2) / $this.width()) * movement,
+  //   //     y: ((relY - $this.height() / 2) / $this.height()) * movement,
+  //   //     ease: Power2.easeOut,
+  //   //   });
+  //   // }
+  // }, []);
 
   return (
     <StyledContactSection>

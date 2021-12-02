@@ -9,12 +9,12 @@ interface StyledNumberProps {
 }
 
 const StyledProjectSection = styled.div`
-  height: 90vh;
+  height: 70vh;
   width: 100%;
   max-width: 90vw;
   /* min-width: 50vw; */
   position: relative;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +36,7 @@ const StyledNumber = styled.div<StyledNumberProps>`
 
 const StyledImageWrapper = styled.div`
   width: 70%;
-  height: 50%;
+  height: 60%;
   max-height: 80vh;
   /*  */
   overflow: hidden;
@@ -45,6 +45,7 @@ const StyledImageWrapper = styled.div`
 
 const StyledImageOverlay = styled.div`
   position: absolute;
+  z-index: 2;
   width: 100%;
   height: 100%;
   top: 0;
@@ -92,15 +93,17 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
   useEffect(() => {
     gsap.to(overlayRef.current, {
       width: "0%",
+      rotation: 0.01,
       duration: 1.4,
       ease: "Power2.easeInOut",
       scrollTrigger: imgRef.current,
     });
     gsap.to(numberRef.current, {
       duration: 1.2,
+      rotation: 0.01,
       y: 0,
       opacity: 1,
-      delay: 0.8,
+      delay: 0.5,
       ease: "Power2.easeInOut",
       scrollTrigger: imgRef.current,
     });
@@ -108,10 +111,9 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
 
   return (
     <StyledProjectSection>
-      {children}
+      <StyledImageOverlay ref={overlayRef} />
       <StyledProjectHeader>Next Journey</StyledProjectHeader>
       <StyledImageWrapper ref={imgWrapperRef}>
-        <StyledImageOverlay ref={overlayRef} />
         <StyledProjectImage ref={imgRef} />
       </StyledImageWrapper>
       <StyledButtonWrapper>
