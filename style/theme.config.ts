@@ -30,6 +30,8 @@ export const GlobalStyles = createGlobalStyle`
    box-sizing: border-box;
   }
 
+/* html{ scroll-behavior:smooth} */
+
 html,
 body {   
   margin: 0;   
