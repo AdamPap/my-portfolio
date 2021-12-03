@@ -4,6 +4,7 @@ import ArrowRight from "../components/ArrowRight";
 interface StyledButtonProps {
   margin?: string;
   padding?: string;
+  alignSelf?: string;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -14,6 +15,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   background-color: ${(props) => props.theme.bg};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
+  align-self: ${(props) => props.alignSelf};
   font-size: 1rem;
   display: flex;
   align-items: center;

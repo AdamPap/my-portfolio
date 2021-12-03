@@ -9,37 +9,50 @@ interface StyledNumberProps {
 }
 
 const StyledProjectSection = styled.div`
-  height: 70vh;
+  height: 80vh;
   width: 100%;
-  max-width: 90vw;
-  /* min-width: 50vw; */
   position: relative;
   overflow-x: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
 `;
 
 const StyledNumber = styled.div<StyledNumberProps>`
   color: ${(props) => props.theme.primary};
-  -webkit-text-fill-color: ${(props) => props.theme.bg};
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: ${(props) => props.theme.primary};
   font-size: ${(props) => props.fontSize};
   font-weight: bolder;
-  top: 50%;
-  right: -30px;
-  transform: translate(0, -50%) rotate(-90deg);
+  top: -20px;
+  right: 0px;
+  opacity: 0;
+  /* transform: translate(0, -50%) rotate(-90deg); */
   position: absolute;
+  z-index: 2;
+  overflow: hidden;
+`;
+const StyledNumberFilled = styled.div<StyledNumberProps>`
+  color: ${(props) => props.theme.primary};
+  font-size: ${(props) => props.fontSize};
+  font-weight: bolder;
+  top: -20px;
+  right: 0px;
+  opacity: 0;
+  /* transform: translate(0, -50%) rotate(-90deg); */
+  position: absolute;
+  z-index: 0;
   overflow: hidden;
 `;
 
 const StyledImageWrapper = styled.div`
-  width: 70%;
+  width: 100%;
+  /* width: 70%; */
+  /* height: 100%; */
   height: 60%;
-  max-height: 80vh;
+
   /*  */
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 `;
 
@@ -51,6 +64,10 @@ const StyledImageOverlay = styled.div`
   top: 0;
   right: 0;
   background-color: ${(props) => props.theme.bg};
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15rem; */
 `;
 
 const StyledProjectImage = styled.div`
@@ -62,6 +79,8 @@ const StyledProjectImage = styled.div`
   width: 100%;
   border-style: none !important;
   outline: none;
+  position: absolute;
+  z-index: 1;
   /* TODO: */
   /* background-attachment: fixed; */
 `;
@@ -82,51 +101,95 @@ const StyledProjectHeader = styled.h1`
   text-transform: uppercase;
 `;
 
+const StyledDetails = styled.div`
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  margin-top: 85px;
+`;
+
+const StyledProjectContainer = styled.div`
+  height: 100%;
+  width: 85%;
+`;
+
 interface ProjectSectionProps {}
 
 export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
   const imgWrapperRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const imgRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const overlayRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const numberRef = useRef() as React.MutableRefObject<HTMLSpanElement>;
+  const numberRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const numberFilledRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   useEffect(() => {
     gsap.to(overlayRef.current, {
       width: "0%",
       rotation: 0.01,
       duration: 1.4,
+
       ease: "Power2.easeInOut",
       scrollTrigger: imgRef.current,
+      // onComplete: () => {
+      //   gsap.to(overlayRef.current, { duration: 0.2, opacity: 0 });
+      // },
     });
     gsap.to(numberRef.current, {
-      duration: 1.2,
+      duration: 0.7,
       rotation: 0.01,
-      y: 0,
+      top: "-120px",
       opacity: 1,
-      delay: 0.5,
+      delay: 0.7,
       ease: "Power2.easeInOut",
       scrollTrigger: imgRef.current,
     });
+    gsap.to(numberFilledRef.current, {
+      duration: 0.7,
+      rotation: 0.01,
+      top: "-120px",
+      opacity: 1,
+      delay: 0.7,
+      ease: "Power2.easeInOut",
+      scrollTrigger: imgRef.current,
+    });
+    // gsap.to(numberRef.current, {
+    //   duration: 1.2,
+    //   rotation: 0.01,
+    //   y: 0,
+    //   opacity: 1,
+    //   delay: 0.5,
+    //   ease: "Power2.easeInOut",
+    //   scrollTrigger: imgRef.current,
+    // });
   }, []);
 
   return (
     <StyledProjectSection>
-      <StyledImageOverlay ref={overlayRef} />
-      <StyledProjectHeader>Next Journey</StyledProjectHeader>
-      <StyledImageWrapper ref={imgWrapperRef}>
-        <StyledProjectImage ref={imgRef} />
-      </StyledImageWrapper>
-      <StyledButtonWrapper>
-        <StyledButton margin="0 30px 0 0" padding="10px 16px">
-          Github <ArrowRight />
-        </StyledButton>
-        <StyledButton padding="10px 16px">
-          Live <ArrowRight />
-        </StyledButton>
-      </StyledButtonWrapper>
-      <StyledNumber fontSize="15rem">
-        <StyledSpan ref={numberRef}>01</StyledSpan>
-      </StyledNumber>
+      <StyledProjectContainer>
+        <StyledImageOverlay ref={overlayRef} />
+        <StyledProjectHeader>Next Journey</StyledProjectHeader>
+        <StyledImageWrapper ref={imgWrapperRef}>
+          <StyledProjectImage ref={imgRef} />
+          <StyledNumber ref={numberRef} fontSize="10rem">
+            01
+          </StyledNumber>
+          <StyledNumberFilled ref={numberFilledRef} fontSize="10rem">
+            01
+          </StyledNumberFilled>
+        </StyledImageWrapper>
+        <StyledButtonWrapper>
+          <StyledButton margin="0 30px 0 0" padding="10px 16px">
+            Github <ArrowRight />
+          </StyledButton>
+          <StyledButton padding="10px 16px">
+            Live <ArrowRight />
+          </StyledButton>
+          <StyledButton margin="0 0 0 auto" padding="10px 16px">
+            View More <ArrowRight />
+          </StyledButton>
+        </StyledButtonWrapper>
+      </StyledProjectContainer>
+      {/* <StyledDetails>Details</StyledDetails> */}
     </StyledProjectSection>
   );
 };

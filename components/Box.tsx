@@ -35,7 +35,7 @@ const StyledBox = styled.div<BoxProps>`
   width: ${(props) => props.width};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
-  max-width: ${(props) => (props.variant === "small" ? "400px" : "1200px")};
+  max-width: ${(props) => (props.variant === "small" ? "400px" : "1400px")};
   display: ${(props) => (props.flex ? "flex" : "block")};
   justify-content: ${(props) => props.justifyContent};
   align-items: ${(props) => props.alignItems};
