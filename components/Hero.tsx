@@ -7,6 +7,7 @@ interface HeroProps {}
 
 const StyledHeroWrapper = styled.div`
   width: 100%;
+  height: 100%;
   margin-top: -10%;
 `;
 
@@ -14,18 +15,20 @@ const StyledRow = styled.div`
   width: 100%;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
 const StyledCol = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 4rem 1rem 4rem;
+  /* margin: 0 4rem 1rem 4rem; */
+  margin-bottom: 2rem;
+  margin-left: 6rem;
 `;
 
 const StyledHeroHeader = styled.h1`
-  font-size: 10rem;
-  line-height: 10rem;
+  font-size: 12rem;
+  line-height: 12rem;
   font-weight: normal;
   margin: 0;
   letter-spacing: 0.2rem;
@@ -97,12 +100,12 @@ export const Hero: React.FC<HeroProps> = ({}) => {
             <StyledSpan ref={addToRefs}>with Typescript and React.</StyledSpan>
           </StyledHeroText>
         </StyledCol>
-        <CircleButton variant="outline">View projects</CircleButton>
+        {/* <CircleButton variant="outline">View projects</CircleButton> */}
       </StyledRow>
       <StyledRow>
-        <CircleButton margin="0 4rem" variant="outline">
+        {/* <CircleButton margin="0 4rem" variant="outline">
           Contact me
-        </CircleButton>
+        </CircleButton> */}
         <StyledHeroHeader>
           <StyledSpan ref={addToRefs}>Developer</StyledSpan>
         </StyledHeroHeader>

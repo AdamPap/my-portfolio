@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { WrapperVariant } from "./Box";
 import { Navbar } from "./Navbar";
 import { Wrapper } from "./Wrapper";

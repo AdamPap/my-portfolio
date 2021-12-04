@@ -20,10 +20,10 @@ const StyledProjectSection = styled.div`
 const StyledNumber = styled.div<StyledNumberProps>`
   color: ${(props) => props.theme.primary};
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: ${(props) => props.theme.primary};
   font-size: ${(props) => props.fontSize};
-  font-weight: bolder;
+  font-weight: bold;
   top: -20px;
   right: 0px;
   opacity: 0;
@@ -35,7 +35,7 @@ const StyledNumber = styled.div<StyledNumberProps>`
 const StyledNumberFilled = styled.div<StyledNumberProps>`
   color: ${(props) => props.theme.primary};
   font-size: ${(props) => props.fontSize};
-  font-weight: bolder;
+  font-weight: bold;
   top: -20px;
   right: 0px;
   opacity: 0;
@@ -137,7 +137,7 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
     gsap.to(numberRef.current, {
       duration: 0.7,
       rotation: 0.01,
-      top: "-120px",
+      top: "-100px",
       opacity: 1,
       delay: 0.7,
       ease: "Power2.easeInOut",
@@ -146,7 +146,7 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
     gsap.to(numberFilledRef.current, {
       duration: 0.7,
       rotation: 0.01,
-      top: "-120px",
+      top: "-100px",
       opacity: 1,
       delay: 0.7,
       ease: "Power2.easeInOut",
@@ -170,10 +170,10 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
         <StyledProjectHeader>Next Journey</StyledProjectHeader>
         <StyledImageWrapper ref={imgWrapperRef}>
           <StyledProjectImage ref={imgRef} />
-          <StyledNumber ref={numberRef} fontSize="10rem">
+          <StyledNumber ref={numberRef} fontSize="8rem">
             01
           </StyledNumber>
-          <StyledNumberFilled ref={numberFilledRef} fontSize="10rem">
+          <StyledNumberFilled ref={numberFilledRef} fontSize="8rem">
             01
           </StyledNumberFilled>
         </StyledImageWrapper>
@@ -185,7 +185,7 @@ export const ProjectSection: React.FC<ProjectSectionProps> = ({ children }) => {
             Live <ArrowRight />
           </StyledButton>
           <StyledButton margin="0 0 0 auto" padding="10px 16px">
-            View More <ArrowRight />
+            View Details <ArrowRight />
           </StyledButton>
         </StyledButtonWrapper>
       </StyledProjectContainer>

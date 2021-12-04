@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
   return (
     <StyledNavbar>
       <div>LOGO</div>
-      <div>BURGER MENU</div>
+      <div>CONTACT ME</div>
     </StyledNavbar>
   );
 };
